@@ -9,7 +9,7 @@ import json
 T = TypeVar('T')
 
 
-class InterfaceRepositorio(Generic[T]):
+class InterfazRepositorio(Generic[T]):
 
     #Carga el archivo config.json para saber a qué BD conectarse.
     def __init__(self):
