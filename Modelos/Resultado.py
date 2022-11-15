@@ -1,3 +1,3 @@
 from Modelos.AbstractModelo import AbstractModelo
-class Jurado(AbstractModelo):
+class Resultado(AbstractModelo):
     pass

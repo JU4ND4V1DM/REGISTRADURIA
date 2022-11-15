@@ -1,3 +1,3 @@
 from Modelos.AbstractModelo import AbstractModelo
-class Ciudadano(AbstractModelo):
+class Candidato(AbstractModelo):
     pass
