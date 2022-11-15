@@ -6,28 +6,32 @@ class ControladorCandidato():
     def __init__(self): #constructor
         print("Creando ControladorCandidato")
         self.RepCandidato=RepositorioCandidato()
-    def CrearCandidato(self,RecibeCandidato):
+    def CrearCandidato(self,RecibeCandidato):#BodyRequest
         print("Creando Candidato")
         NuevoCandidato=Candidato(RecibeCandidato)
-        self.RepCandidato.
-        return [NuevoCandidato]
-    def create(self,infoCandidato):
-        print("Crear un Candidato")
-        elCandidato = Candidato(infoCandidato)
+        self.RepCandidato.save(NuevoCandidato)
+        return NuevoCandidato.__dict__
+
+    def BuscarCandidato(self,id):
+        print("Buscando un Candidato con id ",id)
+        elCandidato = self.RepCandidato.findById(id)
         return elCandidato.__dict__
-    def show(self,id):
-        print("Mostrando un Candidato con id ",id)
-        elCandidato = {
-            "_id": id,
-            "cedula": "123",
-            "nombre": "Juan",
-            "apellido": "Perez"
-        }
-        return elCandidato
-    def update(self,id,infoCandidato):
-        print("Actualizando Candidato con id ",id)
-        elCiudadano = Candidato(infoCandidato)
-        return elCiudadano.__dict__
+
+    def BuscaAllCandidatos(self):
+        print("Buscando Candidatos")
+        return self.RepCandidato.findAll()
+
+    def update(self,RecibeCandidato):
+        print("Actualizando Candidato")
+        UpdateCandidato = Candidato(self.RepCandidato.findById(RecibeCandidato["idObject"]))
+        UpdateCandidato.cedula=RecibeCandidato["cedula"]
+        UpdateCandidato.numResolucion = RecibeCandidato["numero de resolucion"]
+        UpdateCandidato.nombre = RecibeCandidato["nombre"]
+        UpdateCandidato.apellido = RecibeCandidato["apellido"]
+        self.RepCandidato.save(UpdateCandidato)
+        return
+
     def delete(self,id):
         print("Elimiando Candidato con id ",id)
-        return {"deleted_count":1}
+        elCandidato = self.RepCandidato.delete(id)
+        return True
