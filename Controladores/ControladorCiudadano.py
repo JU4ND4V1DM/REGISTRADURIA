@@ -1,4 +1,4 @@
-from Modelos.Ciudadano import Ciudadano
+from Modelos.Candidato import Ciudadano
 class ControladorCiudadano():
     def __init__(self):
         print("Creando ControladorCiudadano")
