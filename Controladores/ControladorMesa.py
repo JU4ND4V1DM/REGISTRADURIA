@@ -30,6 +30,6 @@ class ControladorMesa():
         return
 
     def delete(self,numero):
-        print("Elimiando Candidato con id ",numero)
+        print("Elimiando mesa numero ",numero)
         laMesa = self.RepMesa.delete(numero)
         return True

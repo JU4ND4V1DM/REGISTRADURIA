@@ -6,14 +6,14 @@ import json
 from waitress import serve
 
 from Controladores.ControladorCandidato import ControladorCandidato
-#from controladores.ControladorMesa import ControladorMesa
+from Controladores.ControladorMesa import ControladorMesa
 #from controladores.ControladorPartido import ControladorPartido
 #from controladores.ControladorResultado import ControladorResultado
 
 app = Flask(__name__)
 cors = CORS(app)
 #creacion de constructores
-##controlMesa= ControladorMesa()
+controlMesa= ControladorMesa()
 controlCandi= ControladorCandidato()
 ##controlPartido= ControladorPartido()
 ##controlResultado= ControladorResultado()
@@ -25,7 +25,7 @@ controlCandi= ControladorCandidato()
 #--------------------------------------------------------------------------------------------------------------
 #creacion de mesa
 #--------------------------------------------------------------------------------------------------------------
-'''@app.route("/mesa", methods=['POST'])
+@app.route("/mesa", methods=['POST'])
 def crearMesa():
     requestBody = request.get_json()
     print("Request body: ", requestBody)
@@ -38,8 +38,8 @@ def crearMesa():
 #metodos de obtencion de datos
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/mesa", methods=['GET'])
-def GETMesa():
-    result = controlMesa.buscartodasMesas()
+def GETAllMesas():
+    result = controlMesa.buscarAllMesas()
     if not result:
         return {"resultado": "No se encuentran items en la base de datos!"}
     else:
@@ -47,7 +47,7 @@ def GETMesa():
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/mesa/<string:idObject>", methods=['GET'])
 def GETMesas(idObject):
-    result = controlMesa.buscarMesa(idObject)
+    result = controlMesa.buscarAllMesas(idObject)
     if not result:
         return {"resultado": "No se encuentran items en la base de datos!"}
     else:
@@ -73,7 +73,7 @@ def DeleteMesa(idObject):
     variableRespuesta = {
         "respuesta": "DELETE realizado"
     }
-    return variableRespuesta'''
+    return variableRespuesta
 #--------------------------------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ def DeleteMesa(idObject):
 #--------------------------------------------------------------------------------------------------------------
 
 #--------------------------------------------------------------------------------------------------------------
-#creacion de mesa
+#creacion de Candidato
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/candidato", methods=['POST'])
 def crearCandidato():

@@ -1,37 +1,37 @@
-from Modelos.Candidato import Candidato
-from Repositorios.RepositorioCandidato import RepositorioCandidato
+from Modelos.Resultado import Resultado
+from Repositorios.RepositorioResultado import RepositorioResultado
 
 
-class ControladorCandidato():
+class ControladorResultado():
     def __init__(self): #constructor
-        print("Creando ControladorCandidato")
-        self.RepCandidato=RepositorioCandidato()
-    def CrearCandidato(self,RecibeCandidato):#BodyRequest
-        print("Creando Candidato")
-        NuevoCandidato=Candidato(RecibeCandidato)
-        self.RepCandidato.save(NuevoCandidato)
-        return NuevoCandidato.__dict__
+        print("Creando ControladorResultado")
+        self.RepResultado=RepositorioResultado()
+    def CrearResultado(self,RecibeResultado):#BodyRequest
+        print("Creando Resultado")
+        NuevoResultado=Resultado(RecibeResultado)
+        self.RepResultado.save(NuevoResultado)
+        return NuevoResultado.__dict__
 
-    def BuscarCandidato(self,id):
-        print("Buscando un Candidato con id ",id)
-        elCandidato = self.RepCandidato.findById(id)
-        return elCandidato.__dict__
+    def BuscarResultado(self,id):
+        print("Buscando un Resultado con id ",id)
+        elResultado = self.RepResultado.findById(id)
+        return elResultado.__dict__
 
-    def BuscaAllCandidatos(self):
-        print("Buscando Candidatos")
-        return self.RepCandidato.findAll()
+    def BuscaAllResultados(self):
+        print("Buscando Resultados")
+        return self.RepResultado.findAll()
 
-    def update(self,RecibeCandidato):
-        print("Actualizando Candidato")
-        UpdateCandidato = Candidato(self.RepCandidato.findById(RecibeCandidato["idObject"]))
-        UpdateCandidato.cedula=RecibeCandidato["cedula"]
-        UpdateCandidato.numResolucion = RecibeCandidato["numero de resolucion"]
-        UpdateCandidato.nombre = RecibeCandidato["nombre"]
-        UpdateCandidato.apellido = RecibeCandidato["apellido"]
-        self.RepCandidato.save(UpdateCandidato)
+    def update(self,RecibeResultado):
+        print("Actualizando Resultado")
+        UpdateResultado = Resultado(self.RepResultado.findById(RecibeResultado["idObject"]))
+        UpdateResultado.id=RecibeResultado["id"]
+        UpdateResultado.numMesa = RecibeResultado["numero de Mesa"]
+        UpdateResultado.cedulaCandidato = RecibeResultado["numero de cedula candidato"]
+        UpdateResultado.numVotos = RecibeResultado["numero de Votos"]
+        self.RepResultado.save(UpdateResultado)
         return
 
     def delete(self,id):
-        print("Elimiando Candidato con id ",id)
-        elCandidato = self.RepCandidato.delete(id)
+        print("Elimiando Resultado con id ",id)
+        elResultado = self.RepResultado.delete(id)
         return True
