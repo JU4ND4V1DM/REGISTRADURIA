@@ -7,6 +7,9 @@ from waitress import serve
 
 from Controladores.ControladorCandidato import ControladorCandidato
 from Controladores.ControladorMesa import ControladorMesa
+from Controladores.ControladorPartido import ControladorPartido
+from Controladores.ControladorResultado import ControladorResultado
+
 #from controladores.ControladorPartido import ControladorPartido
 #from controladores.ControladorResultado import ControladorResultado
 
@@ -15,8 +18,8 @@ cors = CORS(app)
 #creacion de constructores
 controlMesa= ControladorMesa()
 controlCandi= ControladorCandidato()
-##controlPartido= ControladorPartido()
-##controlResultado= ControladorResultado()
+controlPartido= ControladorPartido()
+controlResultado= ControladorResultado()
 
 #--------------------------------------------------------------------------------------------------------------
 #metodos de Mesa
@@ -29,7 +32,7 @@ controlCandi= ControladorCandidato()
 def crearMesa():
     requestBody = request.get_json()
     print("Request body: ", requestBody)
-    result = controlMesa.crearMesa(requestBody)
+    result = controlMesa.CrearMesa(requestBody)
     if result:
         return {"resultado": "Mesa Creado!"}
     else:
@@ -39,7 +42,7 @@ def crearMesa():
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/mesa", methods=['GET'])
 def GETAllMesas():
-    result = controlMesa.buscarAllMesas()
+    result = controlMesa.BuscaAllMesas()
     if not result:
         return {"resultado": "No se encuentran items en la base de datos!"}
     else:
@@ -47,7 +50,7 @@ def GETAllMesas():
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/mesa/<string:idObject>", methods=['GET'])
 def GETMesas(idObject):
-    result = controlMesa.buscarAllMesas(idObject)
+    result = controlMesa.BuscarMesa(idObject)
     if not result:
         return {"resultado": "No se encuentran items en la base de datos!"}
     else:
@@ -125,7 +128,7 @@ def PutCandidato():
 #--------------------------------------------------------------------------------------------------------------
 #metodo de asignacion partido
 #--------------------------------------------------------------------------------------------------------------
-'''@app.route("/candidato/<string:idCandidato>/partido/<string:idPartido>", methods=['PUT'])
+@app.route("/candidato/<string:idCandidato>/partido/<string:idPartido>", methods=['PUT'])
 def AsignarPartidoCandidato(idCandidato,idPartido):
     result = controlCandi.asignarPartido(idCandidato,idPartido)
     return jsonify(result)#convierte a json
@@ -256,7 +259,7 @@ def DeleteResultado(idObject):
     variableRespuesta = {
         "respuesta": "DELETE realizado"
     }
-    return variableRespuesta'''
+    return variableRespuesta
 
 
 def loadFileConfig():

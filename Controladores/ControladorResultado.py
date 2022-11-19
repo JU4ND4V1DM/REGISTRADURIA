@@ -26,7 +26,7 @@ class ControladorResultado():
         UpdateResultado = Resultado(self.RepResultado.findById(RecibeResultado["idObject"]))
         UpdateResultado.id=RecibeResultado["id"]
         UpdateResultado.numMesa = RecibeResultado["numero de Mesa"]
-        UpdateResultado.cedulaCandidato = RecibeResultado["numero de cedula candidato"]
+        UpdateResultado.cedula_Candidato = RecibeResultado["cedula_Candidato"]
         UpdateResultado.numVotos = RecibeResultado["numero de Votos"]
         self.RepResultado.save(UpdateResultado)
         return

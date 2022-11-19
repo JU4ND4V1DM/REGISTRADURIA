@@ -10,11 +10,11 @@ class ControladorMesa():
         print("Creando Mesa")
         NuevaMesa=Mesa(RecibeMesa)
         self.RepMesa.save(NuevaMesa)
-        return NuevaMesa.__dict__
+        return True
 
     def BuscarMesa(self,numero):
         print("Buscando un Mesa con numero ",numero)
-        laMesa = self.RepMesa.findById(id)
+        laMesa = Mesa(self.RepMesa.findById(numero))
         return laMesa.__dict__
 
     def BuscaAllMesas(self):
@@ -25,7 +25,7 @@ class ControladorMesa():
         print("Actualizando Mesa")
         UpdateMesa = Mesa(self.RepMesa.findById(RecibeMesa["idObject"]))
         UpdateMesa.numero=RecibeMesa["numero"]
-        UpdateMesa.Cantidad_inscritos = RecibeMesa["cantidad de inscritos"]
+        UpdateMesa.Cantidad_inscritos = RecibeMesa["cantidad_inscritos"]
         self.RepMesa.save(UpdateMesa)
         return
 

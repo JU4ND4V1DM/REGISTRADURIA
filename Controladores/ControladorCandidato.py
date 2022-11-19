@@ -25,7 +25,7 @@ class ControladorCandidato():
         print("Actualizando Candidato")
         UpdateCandidato = Candidato(self.RepCandidato.findById(RecibeCandidato["idObject"]))
         UpdateCandidato.cedula=RecibeCandidato["cedula"]
-        UpdateCandidato.numResolucion = RecibeCandidato["numero de resolucion"]
+        UpdateCandidato.numero_de_Resolucion = RecibeCandidato["numero de resolucion"]
         UpdateCandidato.nombre = RecibeCandidato["nombre"]
         UpdateCandidato.apellido = RecibeCandidato["apellido"]
         self.RepCandidato.save(UpdateCandidato)
