@@ -6,18 +6,18 @@ class ControladorResultado():
     def __init__(self): #constructor
         print("Creando ControladorResultado")
         self.RepResultado=RepositorioResultado()
-    def CrearResultado(self,RecibeResultado):#BodyRequest
+    def crearResultado(self,RecibeResultado):#BodyRequest
         print("Creando Resultado")
         NuevoResultado=Resultado(RecibeResultado)
         self.RepResultado.save(NuevoResultado)
         return NuevoResultado.__dict__
 
-    def BuscarResultado(self,id):
+    def buscarResultado(self,id):
         print("Buscando un Resultado con id ",id)
         elResultado = self.RepResultado.findById(id)
         return elResultado.__dict__
 
-    def BuscaAllResultados(self):
+    def buscarAllResultado(self):
         print("Buscando Resultados")
         return self.RepResultado.findAll()
 

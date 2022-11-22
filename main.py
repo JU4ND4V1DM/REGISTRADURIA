@@ -166,16 +166,16 @@ def crearPartido():
 #Obtencion de datos
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/partido", methods=['GET'])
-def GETPartido():
-    result = controlPartido.buscartodosPartido()
+def GETAllPartidos():
+    result = controlPartido.BuscarAllPartidos()
     if not result:
         return {"resultado": "No se encuentran items en la base de datos!"}
     else:
         return jsonify(result)
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/partido/<string:idObject>", methods=['GET'])
-def GETtodosPartidos(idObject):
-    result = controlPartido.buscarPartido(idObject)
+def GETPartido(idObject):
+    result = controlPartido.BuscarPartido(idObject)
     if not result:
         return {"resultado": "No se encuentran items en la base de datos!"}
     else:
@@ -224,7 +224,7 @@ def crearResultado(idCandidato,idMesa):
 #--------------------------------------------------------------------------------------------------------------
 @app.route("/resultado", methods=['GET'])
 def GETResultado():
-    result = controlResultado.buscarTodosResultado()
+    result = controlResultado.buscarAllResultado()
     if not result:
         return {"resultado": "No se encuentran items en la base de datos!"}
     else:

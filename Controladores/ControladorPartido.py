@@ -17,7 +17,7 @@ class ControladorPartido():
         elPartido = self.RepPartido.findById(id)
         return elPartido.__dict__
 
-    def BuscaAllPartidos(self):
+    def BuscarAllPartidos(self):
         print("Buscando Partidos")
         return self.RepPartido.findAll()
 
